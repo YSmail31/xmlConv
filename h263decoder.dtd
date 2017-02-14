@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    TODO define vocabulary identification
+    PUBLIC ID: -//vendor//vocabulary//EN
+    SYSTEM ID: http://server/path/h263decoder.dtd
+
+-->
+
+<!--
+    An example how to use this DTD from your XML document:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE sdf3 SYSTEM "h263decoder.dtd">
+
+    <sdf3>
+    ...
+    </sdf3>
+-->
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT sdf3 (applicationGraph)*>
+<!ATTLIST sdf3
+    type CDATA #IMPLIED
+    version CDATA #IMPLIED
+    xsi:noNamespaceSchemaLocation CDATA #IMPLIED
+    xmlns:xsi CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT applicationGraph (sdf|sdfProperties)*>
+<!ATTLIST applicationGraph
+    name CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT sdf (actor|channel)*>
+<!ATTLIST sdf
+    name CDATA #IMPLIED
+    type CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT actor (port)*>
+<!ATTLIST actor
+    name CDATA #IMPLIED
+    type CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT port EMPTY>
+<!ATTLIST port
+    name CDATA #IMPLIED
+    type CDATA #IMPLIED
+    rate CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT channel EMPTY>
+<!ATTLIST channel
+    name CDATA #IMPLIED
+    srcActor CDATA #IMPLIED
+    srcPort CDATA #IMPLIED
+    dstActor CDATA #IMPLIED
+    dstPort CDATA #IMPLIED
+    initialTokens CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT sdfProperties (actorProperties|channelProperties|graphProperties)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT actorProperties (processor)*>
+<!ATTLIST actorProperties
+    actor CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT processor (executionTime|memory)*>
+<!ATTLIST processor
+    type CDATA #IMPLIED
+    default CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT executionTime EMPTY>
+<!ATTLIST executionTime
+    time CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT memory (stateSize)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT stateSize EMPTY>
+<!ATTLIST stateSize
+    max CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT channelProperties (tokenSize)*>
+<!ATTLIST channelProperties
+    channel CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT tokenSize EMPTY>
+<!ATTLIST tokenSize
+    sz CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT graphProperties (timeConstraints)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT timeConstraints (throughput)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT throughput (#PCDATA)>
